@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body.dashboard-page {
+  background-color: #1c1f26;
+  color: #f0f0f0;
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #272b33;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.sidebar h1 {
+  color: #4CAF50;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  padding: 0.8rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sidebar ul li:hover {
+  background-color: #3a3f48;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.cards {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: #323741;
+  padding: 1.5rem;
+  border-radius: 10px;
+  flex: 1;
+}
+
+.widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.widget {
+  background-color: #3a3f48;
+  padding: 1.25rem;
+  border-radius: 10px;
+}

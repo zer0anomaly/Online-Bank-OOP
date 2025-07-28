@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body.auth-page {
+  background-color: #1c1f26;
+  color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.auth-container {
+  background-color: #2c2f36;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-container input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #3a3d45;
+  color: #fff;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.auth-container .link-text {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.auth-container .link-text a {
+  color: #4CAF50;
+  text-decoration: none;
+}
