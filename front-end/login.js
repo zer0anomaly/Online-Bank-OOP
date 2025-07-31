@@ -35,7 +35,6 @@ class Login {
 				}else{
 					alert("Something went wront, please try again.")
 				}
-				making_login()
 			}
 		}
 	}
