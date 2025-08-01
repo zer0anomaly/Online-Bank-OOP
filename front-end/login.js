@@ -28,7 +28,7 @@ class Login {
 				
 				const data = await response.json();
 
-				if (data.result.includes("success")){
+				if (data.result.includes("Login successful")){
 					window.location.href = "http://localhost:3000/main.html"
 					localStorage.setItem("twtToken", data.jwtToken);
 					sessionStorage.setItem("sessionStorage", data.sessionStorage);
