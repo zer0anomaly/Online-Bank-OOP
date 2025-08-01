@@ -1,4 +1,4 @@
-const UserStore = require('UserStore');
+const UserStore = require('./user.store.service');
 
 class AuthService {
   login(username, password) {

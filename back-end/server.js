@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const UserController = require('./controller/UserController'); // ✅ Add this
+const AuthController = require('./controller/auth.controller');
 
 const frontEndPath = path.join(__dirname, '../front-end');
 
