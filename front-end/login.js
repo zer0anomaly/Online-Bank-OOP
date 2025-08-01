@@ -32,8 +32,10 @@ class Login {
 					window.location.href = "http://localhost:3000/main.html"
 					localStorage.setItem("twtToken", data.jwtToken);
 					sessionStorage.setItem("sessionStorage", data.sessionStorage);
-				}else{
-					alert("Something went wront, please try again.")
+				}else if (data.result.includes("Login failed")){
+					alert("Your email or password is wrong, please try again.")
+				}else {
+					alert("Something went wrong...")
 				}
 			}
 		}
