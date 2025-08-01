@@ -1,21 +1,25 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const UserController = require('./controller/UserController'); // ✅ Add this
 
 const frontEndPath = path.join(__dirname, '../front-end');
 
 const server = http.createServer((req, res) => {
+  // ✅ Handle login API request
+  if (req.method === 'POST' && req.url === '/api/login') {
+    return UserController.login(req, res);
+  }
+
+  // ✅ Serve static files
   let filePath = '';
 
-  // If root path, serve index.html
   if (req.url === '/' || req.url === '/index.html') {
     filePath = path.join(frontEndPath, 'index.html');
   } else {
-    // Serve any file from front-end folder
     filePath = path.join(frontEndPath, req.url);
   }
 
-  // Get the file extension to determine content type
   const ext = path.extname(filePath);
   let contentType = 'text/plain';
   if (ext === '.html') contentType = 'text/html';
@@ -24,7 +28,6 @@ const server = http.createServer((req, res) => {
   else if (ext === '.png') contentType = 'image/png';
   else if (ext === '.jpg' || ext === '.jpeg') contentType = 'image/jpeg';
 
-  // Read and serve file
   fs.readFile(filePath, (err, data) => {
     if (err) {
       res.writeHead(404, { 'Content-Type': 'text/plain' });
