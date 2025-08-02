@@ -3,7 +3,7 @@ const path = require('path');
 
 class AuthService {
 	constructor(){
-		this.usersFilePath = path.join(__dirname, '../users/users.json');
+		this.usersFilePath = path.join(__dirname, '../data/users.json');
 	}
 
 	readUsers(){
