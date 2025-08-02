@@ -1,17 +1,17 @@
-let username = document.getElementById("username");
-let password = document.getElementById("password");
-let submit = document.getElementById("submit")
+document.addEventListener("DOMContentLoaded", () => {
+	let username = document.getElementById("username");
+	let password = document.getElementById("password");
+	let submit = document.getElementById("submit");
 
-class Login {
-	constructor(username, password){
-		this.username = username;
-		this.password = password;
-	}
+	class Login {
+		constructor(username, password){
+			this.username = username;
+			this.password = password;
+		}
 
-	login_method(){
-		async function making_login(){
+		async login_method(){
 			try {
-				const response = await fetch('http://localhost:3000/login', {
+				const response = await fetch('http://localhost:3000/auth/login', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'
@@ -23,26 +23,29 @@ class Login {
 				});
 
 				if (!response.ok){
-					throw new Error (`HTTP error! Status: ${response.status}`)
+					throw new Error (`HTTP error! Status: ${response.status}`);
 				}
 				
 				const data = await response.json();
 
-				if (data.result.includes("Login successful")){
-					window.location.href = "http://localhost:3000/main.html"
+				if (data.message.includes("Login successful")){
 					localStorage.setItem("twtToken", data.jwtToken);
 					sessionStorage.setItem("sessionStorage", data.sessionStorage);
-				}else if (data.result.includes("Login failed")){
-					alert("Your email or password is wrong, please try again.")
+					window.location.href = "http://localhost:3000/main.html";
+				}else if (data.message.includes("Login failed")){
+					alert("Your email or password is wrong, please try again.");
 				}else {
-					alert("Something went wrong...")
+					alert("Something went wrong...");
 				}
+			} catch (error) {
+				console.error("Login failed:", error);
+				alert("An error occurred during login.");
 			}
 		}
 	}
-}
-submit.addEventListener("click", () => {
-	let request = new Login(username, password);
 
-	request.login_method()
-})
+	submit.addEventListener("click", () => {
+		const request = new Login(username.value, password.value);
+		request.login_method();
+	});
+});
