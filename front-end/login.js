@@ -36,7 +36,7 @@ class Login {
 			}
 		} catch (error) {
 			console.error("Login failed:", error);
-			alert("An error occurred during login.");
+			alert("Your email or password is wrong, please try again.");
 		}
 	}
 }
