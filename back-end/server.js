@@ -13,7 +13,7 @@ app.use(express.static(frontEndPath));
 
 // Routes
 app.use('/auth', authRoutes);      // Handles /auth/login
-app.use('/', registerRoutes);      // Handles /register ✅
+app.use('/register', registerRoutes);      // Handles /register ✅
 
 app.listen(3000, () => {
   console.log('Server running at http://localhost:3000');
