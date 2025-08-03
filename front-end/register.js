@@ -1,14 +1,12 @@
-let submit_btn = document.getElementById("submit_btn");
-
 class Registration {
-	constructor(name, username, email, password){
+	constructor(name, username, email, password) {
 		this.name = name;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 	}
 
-	async registration_method(){
+	async registration_method() {
 		try {
 			const response = await fetch('http://localhost:3000/register', {
 				method: 'POST',
@@ -23,7 +21,7 @@ class Registration {
 				})
 			});
 
-			if (!response.ok){
+			if (!response.ok) {
 				throw new Error(`HTTP error! Status: ${response.status}`);
 			}
 
@@ -41,11 +39,16 @@ class Registration {
 	}
 }
 
-submit_btn.addEventListener("click", () => {
-	let name = document.getElementById("name").value.trim();
-	let username = document.getElementById("username").value.trim();
-	let email = document.getElementById("email").value.trim();
-	let password = document.getElementById("password").value.trim();
+// Attach form event listener
+const form = document.getElementById("register-form");
+
+form.addEventListener("submit", (event) => {
+	event.preventDefault(); // Stop form from reloading the page
+
+	const name = document.getElementById("name").value.trim();
+	const username = document.getElementById("username").value.trim();
+	const email = document.getElementById("email").value.trim();
+	const password = document.getElementById("password").value.trim();
 
 	if (!name || !username || !email || !password) {
 		alert("Please fill in all fields.");

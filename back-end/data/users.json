@@ -16,5 +16,11 @@
     "user_name": "test",
     "email": "test@test.com",
     "password": "123"
+  },
+  {
+    "full_name": "abbos",
+    "user_name": "abbos123",
+    "email": "abbos@gmail.com",
+    "password": "1234"
   }
 ]
