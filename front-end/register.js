@@ -28,7 +28,7 @@ class Registration {
 			const data = await response.json();
 
 			if (data.message && data.message.includes("success")) {
-				window.location.href = "http://localhost:3000/login";
+				window.location.href = "http://localhost:3000/login.html";
 			} else {
 				alert("Something went wrong, please try again.");
 			}
