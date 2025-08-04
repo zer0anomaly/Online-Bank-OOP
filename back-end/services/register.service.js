@@ -26,7 +26,7 @@ class RegisterService {
 	async registering() {
 		const fileContent = await fs.readFile(path_for_users, 'utf-8');
 		const users = JSON.parse(fileContent);
-		const hashedPassword = await bcrypt.hash(password, 10)
+		const hashedPassword = await bcrypt.hash(this.password, 10)
 
 		users.push({
 			full_name: this.full_name,

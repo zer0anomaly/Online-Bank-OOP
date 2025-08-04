@@ -52,5 +52,11 @@
     "user_name": "Jamshudd",
     "email": "jamshud@gmail.com",
     "password": "1234"
+  },
+  {
+    "full_name": "Joe Barberro",
+    "user_name": "joe123",
+    "email": "joe@gmail.com",
+    "password": "$2b$10$i4BFrA3rsIX012ThGEu2BunNruiaM4OyRhSsL/e.kZ8f510923ZZ."
   }
 ]
