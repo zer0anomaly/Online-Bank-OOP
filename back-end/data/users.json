@@ -58,5 +58,11 @@
     "user_name": "joe123",
     "email": "joe@gmail.com",
     "password": "$2b$10$i4BFrA3rsIX012ThGEu2BunNruiaM4OyRhSsL/e.kZ8f510923ZZ."
+  },
+  {
+    "full_name": "Victus Com",
+    "user_name": "victus",
+    "email": "victus@gmail.com",
+    "password": "$2b$10$/76x0IeN4qc.Pf5XzaqMtuo2mtQxGv8eULKdbtBKc088UYk53IWqa"
   }
 ]

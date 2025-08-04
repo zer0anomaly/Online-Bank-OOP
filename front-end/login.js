@@ -10,36 +10,39 @@ class Login {
 	}
 
 	async login_method(){
-		try {
-			const response = await fetch('http://localhost:3000/auth/login', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					email: this.email,
-					password: this.password
-				})
-			});
+	try {
+		const response = await fetch('http://localhost:3000/auth/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				email: this.email,
+				password: this.password
+			})
+		});
 
-			if (!response.ok){
-				throw new Error(`HTTP error! Status: ${response.status}`);
-			}
+		const data = await response.json();
 
-			const data = await response.json();
-
+		if (response.ok) {
 			if (data.message.includes("Login successful")){
 				window.location.href = "http://localhost:3000/main.html";
-			} else if (data.message.includes("Invalid email or password")) {
-				login_message.textContent = 'Invalid email or password, please try again.'
 			} else {
-				login_message.textContent = "Something went wrong..."
+				login_message.textContent = "Unexpected success response.";
 			}
-		} catch (error) {
-			console.error("Login failed:", error);
-			login_message.textContent = "Something went wrong please try again.";
+		} else {
+			if (data.message && data.message.includes("Invalid email or password")) {
+				login_message.textContent = 'Invalid email or password, please try again.';
+			} else {
+				login_message.textContent = data.message || "Login failed. Try again.";
+			}
 		}
+	} catch (error) {
+		console.error("Login failed:", error);
+		login_message.textContent = "Something went wrong. Please try again.";
 	}
+}
+
 }
 
 form.addEventListener("submit", (e) => {
