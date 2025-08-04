@@ -1,5 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
+const bcrypt = require('bcrypt');
 
 const path_for_users = path.join(__dirname, '../data/users.json');
 
@@ -25,12 +26,13 @@ class RegisterService {
 	async registering() {
 		const fileContent = await fs.readFile(path_for_users, 'utf-8');
 		const users = JSON.parse(fileContent);
+		const hashedPassword = await bcrypt.hash(password, 10)
 
 		users.push({
 			full_name: this.full_name,
 			user_name: this.user_name,
 			email: this.email,
-			password: this.password
+			password: hashedPassword
 		});
 
 		await fs.writeFile(path_for_users, JSON.stringify(users, null, 2));
