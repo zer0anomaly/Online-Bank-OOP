@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcrypt');
 
 class AuthService {
 	constructor(){
@@ -11,10 +12,21 @@ class AuthService {
 		return JSON.parse(data);
 	}
 
-	loginUser(email, password){
+	async loginUser(email, password){
 		const users = this.readUsers();
-		const user = users.find(u => u.email === email && u.password === password);
-		return user || null;
+		const user = users.find(u => u.email === email);
+
+		if (!user) {
+			return null; // user not found
+		}
+
+		const isMatch = await bcrypt.compare(password, user.password);
+
+		if (!isMatch) {
+			return null;
+		}
+
+		return user; 
 	}
 }
 

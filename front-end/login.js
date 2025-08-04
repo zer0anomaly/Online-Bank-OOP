@@ -1,6 +1,7 @@
 const email = document.getElementById("email"); // <- updated from username
 const password = document.getElementById("password");
 const form = document.getElementById("login-form");
+const login_message = document.getElementById("login-message")
 
 class Login {
 	constructor(email, password){
@@ -29,14 +30,14 @@ class Login {
 
 			if (data.message.includes("Login successful")){
 				window.location.href = "http://localhost:3000/main.html";
-			} else if (data.message.includes("Login failed")) {
-				alert("Your email or password is wrong, please try again.");
+			} else if (data.message.includes("Invalid email or password")) {
+				login_message.textContent = 'Invalid email or password, please try again.'
 			} else {
-				alert("Something went wrong...");
+				login_message.textContent = "Something went wrong..."
 			}
 		} catch (error) {
 			console.error("Login failed:", error);
-			alert("Your email or password is wrong, please try again.");
+			login_message.textContent = "Something went wrong please try again.";
 		}
 	}
 }
