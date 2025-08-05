@@ -64,5 +64,11 @@
     "user_name": "victus",
     "email": "victus@gmail.com",
     "password": "$2b$10$/76x0IeN4qc.Pf5XzaqMtuo2mtQxGv8eULKdbtBKc088UYk53IWqa"
+  },
+  {
+    "full_name": "Usmonjonov Alibek",
+    "user_name": "ali123",
+    "email": "ali@gmail.com",
+    "password": "$2b$10$tORoyLG0Eu8SkmDv3MlVf.21I4XCvTPVv/EgQUe7ytIzh.5ds5b2W"
   }
 ]

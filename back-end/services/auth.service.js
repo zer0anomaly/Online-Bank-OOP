@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 class AuthService {
 	constructor(){
@@ -17,16 +19,23 @@ class AuthService {
 		const user = users.find(u => u.email === email);
 
 		if (!user) {
-			return null; // user not found
+			return null; 
 		}
 
 		const isMatch = await bcrypt.compare(password, user.password);
-
 		if (!isMatch) {
 			return null;
 		}
 
-		return user; 
+		// ✅ FIXED: expiresIn (not expiresIN)
+		const token = jwt.sign(
+			{ id: user.id, email: user.email },
+			process.env.JWT_SECRET,
+			{ expiresIn: process.env.JWT_EXPIRES_IN }
+		);
+
+		// ✅ Return both user and token if needed
+		return { user, token };
 	}
 }
 
