@@ -27,14 +27,13 @@ class AuthService {
 			return null;
 		}
 
-		// ✅ FIXED: expiresIn (not expiresIN)
 		const token = jwt.sign(
 			{ id: user.id, email: user.email },
 			process.env.JWT_SECRET,
 			{ expiresIn: process.env.JWT_EXPIRES_IN }
 		);
 
-		// ✅ Return both user and token if needed
+
 		return { user, token };
 	}
 }
