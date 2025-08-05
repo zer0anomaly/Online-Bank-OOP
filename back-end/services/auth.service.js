@@ -3,6 +3,7 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const JWT_SECRET = 'WOUBALUBADUBDUB'
 
 class AuthService {
 	constructor(){
@@ -29,9 +30,10 @@ class AuthService {
 
 		const token = jwt.sign(
 			{ id: user.id, email: user.email },
-			process.env.JWT_SECRET,
-			{ expiresIn: process.env.JWT_EXPIRES_IN }
-		);
+			JWT_SECRET,
+			{ expiresIn: '1h' } // You can change '1h' to '2d', etc.
+		);	
+
 
 
 		return { user, token };
