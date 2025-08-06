@@ -28,7 +28,6 @@ class Registration {
 				window.location.href = "http://localhost:3000/login.html";
 			}
 		} else {
-			// Show error from server
 			if (data.message && data.message.includes("User already exists")) {
 				response_message.textContent = "User already exists";
 			} else {
