@@ -27,6 +27,7 @@ class Login {
 		if (response.ok) {
 			if (data.message.includes("Login successful")){
 				localStorage.setItem('token', data.token)
+				localStorage.setItem("email", this.email)
 				window.location.href = "http://localhost:3000/main.html";
 			} else {
 				login_message.textContent = "Unexpected success response.";
