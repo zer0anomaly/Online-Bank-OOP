@@ -1,4 +1,4 @@
-const RegisterService = require('../services/register.service');
+sconst RegisterService = require('../services/register.service');
 
 class AuthController {
 	async register(req, res) {
