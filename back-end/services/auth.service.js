@@ -31,7 +31,7 @@ class AuthService {
 		const token = jwt.sign(
 			{ id: user.id, email: user.email },
 			JWT_SECRET,
-			{ expiresIn: '1h' } // You can change '1h' to '2d', etc.
+			{ expiresIn: '30d' } 
 		);	
 
 

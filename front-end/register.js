@@ -25,6 +25,7 @@ class Registration {
 
 		if (response.ok) {
 			if (data.message && data.message.includes("success")) {
+				localStorage.setItem('name', this.name)
 				window.location.href = "http://localhost:3000/login.html";
 			}
 		} else {

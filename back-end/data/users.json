@@ -1,74 +1,8 @@
 [
   {
-    "full_name": "Admin User",
-    "user_name": "admin",
-    "email": "admin@example.com",
-    "password": "1234"
-  },
-  {
-    "full_name": "Test User",
-    "user_name": "test",
-    "email": "test@example.com",
-    "password": "abcd"
-  },
-  {
-    "full_name": "Test",
-    "user_name": "test",
-    "email": "test@test.com",
-    "password": "123"
-  },
-  {
-    "full_name": "abbos",
-    "user_name": "abbos123",
-    "email": "abbos@gmail.com",
-    "password": "1234"
-  },
-  {
-    "full_name": "abojon",
-    "user_name": "abojon123",
-    "email": "abojon@gmail.com",
-    "password": "1234"
-  },
-  {
     "full_name": "Vito Scaletta",
-    "user_name": "VitoS",
-    "email": "vitoscaletta@gmail.com",
-    "password": "1234"
-  },
-  {
-    "full_name": "Jamshid",
-    "user_name": "jamshid123",
-    "email": "jamshid@gmail.com",
-    "password": "1234"
-  },
-  {
-    "full_name": "carlos ermanos",
-    "user_name": "carlos_cool",
-    "email": "carlos@gmail.com",
-    "password": "12345"
-  },
-  {
-    "full_name": "Jamshud",
-    "user_name": "Jamshudd",
-    "email": "jamshud@gmail.com",
-    "password": "1234"
-  },
-  {
-    "full_name": "Joe Barberro",
-    "user_name": "joe123",
-    "email": "joe@gmail.com",
-    "password": "$2b$10$i4BFrA3rsIX012ThGEu2BunNruiaM4OyRhSsL/e.kZ8f510923ZZ."
-  },
-  {
-    "full_name": "Victus Com",
-    "user_name": "victus",
-    "email": "victus@gmail.com",
-    "password": "$2b$10$/76x0IeN4qc.Pf5XzaqMtuo2mtQxGv8eULKdbtBKc088UYk53IWqa"
-  },
-  {
-    "full_name": "Usmonjonov Alibek",
-    "user_name": "ali123",
-    "email": "ali@gmail.com",
-    "password": "$2b$10$tORoyLG0Eu8SkmDv3MlVf.21I4XCvTPVv/EgQUe7ytIzh.5ds5b2W"
+    "user_name": "Vito",
+    "email": "vito@gmail.com",
+    "password": "$2b$10$vMMYE2G/GnMfXvC1CLLwz.nltlq82sRuclKZIKe0m5wUPYug4kNfi"
   }
 ]

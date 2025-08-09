@@ -1,5 +1,6 @@
 const logout_btn = document.getElementById("logout-btn");
 const email = localStorage.getItem('email');
+const name = localStorage.getItem('name');
 
 class ShowingInfo {
 	constructor(email) {
@@ -7,22 +8,10 @@ class ShowingInfo {
 		this.baseUrl = 'http://localhost:3000/userinfo';
 	}
 
-	async nameRequest() {
-		try {
-			const response = await fetch(`${this.baseUrl}/name`, {
-				method: "POST",
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email: this.email })
-			});
-
-			if (!response.ok) throw new Error(response.status);
-
-			const data = await response.json();
-			document.getElementById("name_place").textContent = data.name;
-
-		} catch (error) {
-			console.error("Error fetching name:", error);
-		}
+	nameRequest(){
+		const name = localStorage.getItem('name');
+		document.getElementById('name_place').textContent = name;
+		document.getElementById('name_place').style.margin = '10px';
 	}
 
 	async balance() {
