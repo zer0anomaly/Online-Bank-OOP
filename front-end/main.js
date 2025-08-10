@@ -8,74 +8,47 @@ class ShowingInfo {
 		this.baseUrl = 'http://localhost:3000/userinfo';
 	}
 
-	nameRequest(){
+	nameRequest() {
 		const name = localStorage.getItem('name');
 		document.getElementById('name_place').textContent = name;
 		document.getElementById('name_place').style.margin = '10px';
 	}
 
 	async balance() {
-		try {
-			const response = await fetch(`${this.baseUrl}/balance`, {
-				method: "POST",
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email: this.email })
-			});
+    	try {
+        	const response = await fetch(`${this.baseUrl}/balance`, {
+            	method: "POST",
+           		headers: { 'Content-Type': 'application/json' },
+            	body: JSON.stringify({ email: this.email })
+        	});
 
-			if (!response.ok) throw new Error(response.status);
+        	if (!response.ok) throw new Error(response.status);
 
-			const data = await response.json();
-			document.getElementById("balance").textContent = data.balance;
-
-		} catch (error) {
-			console.error("Error fetching balance:", error);
-		}
+        	const data = await response.json();
+        	document.getElementById("balance").textContent = "Balance: " + "$" + data.balance;
+    	} catch (error) {
+        	console.error("Error fetching balance:", error);
+    	}
 	}
 
+
+
+	// These will only work if backend routes exist
 	async recentTransactionsRequest() {
-		try {
-			const response = await fetch(`${this.baseUrl}/recent_transactions`, {
-				method: "POST",
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email: this.email })
-			});
-
-			if (!response.ok) throw new Error(response.status);
-
-			const data = await response.json();
-			document.getElementById("recent_transactions").textContent = data.recent_transaction;
-
-		} catch (error) {
-			console.error("Error fetching transactions:", error);
-		}
+		console.warn("recentTransactionsRequest skipped: backend route missing.");
 	}
 
 	async upcomingBills() {
-		try {
-			const response = await fetch(`${this.baseUrl}/upcoming_bills`, {
-				method: "POST",
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email: this.email })
-			});
-
-			if (!response.ok) throw new Error(response.status);
-
-			const data = await response.json();
-			document.getElementById("upcoming_bills").textContent = data.upcoming_bills;
-
-		} catch (error) {
-			console.error("Error fetching bills:", error);
-		}
+		console.warn("upcomingBills skipped: backend route missing.");
 	}
 }
-
 
 const userInfo = new ShowingInfo(email);
 userInfo.nameRequest();
 userInfo.balance();
-userInfo.recentTransactionsRequest();
-userInfo.upcomingBills();
-
+// Commented out because backend doesn't have them
+// userInfo.recentTransactionsRequest();
+// userInfo.upcomingBills();
 
 logout_btn.addEventListener("click", () => {
 	localStorage.removeItem("token");
