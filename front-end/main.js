@@ -1,41 +1,75 @@
 const logout_btn = document.getElementById("logout-btn");
-const email = localStorage.getItem('email');
-const name = localStorage.getItem('name');
+const email = localStorage.getItem("email");
 
 class ShowingInfo {
 	constructor(email) {
 		this.email = email;
-		this.baseUrl = 'http://localhost:3000/userinfo';
+		this.baseUrl = "http://localhost:3000/userinfo";
 	}
 
 	nameRequest() {
-		const name = localStorage.getItem('name');
-		document.getElementById('name_place').textContent = name;
-		document.getElementById('name_place').style.margin = '10px';
+		const name = localStorage.getItem("name") || "User";
+		const namePlace = document.getElementById("name_place");
+		if (namePlace) {
+			namePlace.textContent = name;
+			namePlace.style.margin = "10px";
+		}
 	}
 
 	async balance() {
-    	try {
-        	const response = await fetch(`${this.baseUrl}/balance`, {
-            	method: "POST",
-           		headers: { 'Content-Type': 'application/json' },
-            	body: JSON.stringify({ email: this.email })
-        	});
+		try {
+			const response = await fetch(`${this.baseUrl}/balance`, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ email: this.email })
+			});
 
-        	if (!response.ok) throw new Error(response.status);
+			if (!response.ok) throw new Error(response.status);
 
-        	const data = await response.json();
-        	document.getElementById("balance").textContent = "Balance: " + "$" + data.balance;
-    	} catch (error) {
-        	console.error("Error fetching balance:", error);
-    	}
+			const data = await response.json();
+			const balanceEl = document.getElementById("balance");
+			if (balanceEl) {
+				balanceEl.textContent = `Balance: $${data.balance}`;
+			}
+		} catch (error) {
+			console.error("Error fetching balance:", error);
+		}
 	}
 
-
-
-	// These will only work if backend routes exist
 	async recentTransactionsRequest() {
-		console.warn("recentTransactionsRequest skipped: backend route missing.");
+		try {
+			const request = await fetch(`${this.baseUrl}/recentTransactions`, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ email: this.email })
+			});
+
+			if (!request.ok) throw new Error("Request failed.");
+
+			const data = await request.json();
+
+			const container = document.getElementById("transaction-container");
+			if (!container) return;
+			container.innerHTML = ""; 
+
+			const wrapper = document.createElement("div");
+			wrapper.classList.add("transactions-wrapper");
+
+			data.slice(0, 10).forEach(tx => {
+				const txDiv = document.createElement("div");
+				txDiv.classList.add("transaction-item");
+				txDiv.innerHTML = `
+					<strong>${tx.type.toUpperCase()}</strong> - $${tx.amount} <br>
+					<small>${tx.date}</small> <br>
+					<small>${tx.description || ""}</small>
+				`;
+				wrapper.appendChild(txDiv);
+			});
+
+			container.appendChild(wrapper);
+		} catch (error) {
+			console.error("Error fetching recent transactions:", error);
+		}
 	}
 
 	async upcomingBills() {
@@ -46,12 +80,11 @@ class ShowingInfo {
 const userInfo = new ShowingInfo(email);
 userInfo.nameRequest();
 userInfo.balance();
-// Commented out because backend doesn't have them
-// userInfo.recentTransactionsRequest();
-// userInfo.upcomingBills();
+userInfo.recentTransactionsRequest();
 
 logout_btn.addEventListener("click", () => {
 	localStorage.removeItem("token");
 	localStorage.removeItem("email");
-	window.location.href = '/login.html';
+	localStorage.removeItem("name");
+	window.location.href = "/login.html";
 });
