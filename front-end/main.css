@@ -68,3 +68,22 @@ body.dashboard-page {
   padding: 1.25rem;
   border-radius: 10px;
 }
+.transactions-wrapper {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 300px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.transaction-item {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.transaction-item:hover {
+  background: #eef;
+}
