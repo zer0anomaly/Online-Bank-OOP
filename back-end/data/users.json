@@ -4,5 +4,39 @@
     "user_name": "Vito",
     "email": "vito@gmail.com",
     "password": "$2b$10$vMMYE2G/GnMfXvC1CLLwz.nltlq82sRuclKZIKe0m5wUPYug4kNfi"
+  },
+  {
+    "full_name": "lincolin barous",
+    "user_name": "barous",
+    "email": "barous@gmail.com",
+    "password": "$2b$10$X5UPegs7E0QPuMB28MqnFO1PW.zZXMM0V21X8cBt3XPYS8tN2z6Hy"
+  },
+  {
+    "full_name": "spider man",
+    "user_name": "spider",
+    "email": "spider@gmail.com",
+    "password": "$2b$10$8Q6jVSuS0BcHySCYTk4SyOwLv8lPBNsSq46bW1fmHx73WuQgsYFq2"
+  },
+  {
+    "full_name": "Barry Alan",
+    "user_name": "Barry",
+    "email": "barry@gmail.com",
+    "password": "$2b$10$nTk1.xkigrHad9eDlQgs6en8H5R8WIShPI838kKzD3YKmPsxJYOW."
+  },
+  {
+    "email": "john@example.com",
+    "password": "$2b$10$1QNVpgw2L21BHLvwAf0tMuY5Npz7bV2C9Uqb2vUIqKjRqQ3SxovSa"
+  },
+  {
+    "full_name": "parda dot",
+    "user_name": "parda",
+    "email": "parda@gmail.com",
+    "password": "$2b$10$cqokszjdB9G3VOi6VKnKF.hRlm5r1XsJgLWZjz.6P4o1elOPJkCM2"
+  },
+  {
+    "full_name": "blat",
+    "user_name": "blat1",
+    "email": "blat@gmail.com",
+    "password": "$2b$10$7x1W5A9EHZE2aQdGWgxqWOG.hiBvA01DQE15AuV4x4IhIIhpOv8Lm"
   }
 ]
