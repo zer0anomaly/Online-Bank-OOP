@@ -11,7 +11,7 @@
     <h1>💰 MyBank</h1>
     <ul>
       <li>Dashboard</li>
-      <li>Transfer Money</li>
+      <li id="transfer_money">Transfer Money</li>
       <li>Transaction History</li>
       <li>Pay Bills</li>
       <li>Deposit</li>
@@ -26,15 +26,22 @@
     <h2 id="name_place" class="name_place" style="gap: 10px;"></h2>
     
     <div class="cards">
-      <div class="card" id="balance">Balance: <strong>$0</strong></div>
+      <div class="card" id="balance">Balance: $0</div>
       <button class="card" id="recent_transaction">Recent Transactions</button>
-      <div id="transactions-container"></div>
       <button class="card" id="upcoming_bills">Upcoming Bills</button>
     </div>
+    <div id="transfer_section_div" class="transfer_section_div">
+      <button id="back_button" class="back_button">←</button>
+      <h3 id="recipents_email" class="recipents_email">Recipient’s Email:</h3>
+      <input type="email" placeholder="Email" id="to_email" class="to_email">
+      <input type="text"  placeholder="Trasfer amount" id="transfer_amount" class="transfer_amount">
+      <div id="response_place" class="response_place"></div>
+      <button id="send_button" class="send_button">Send</button>
+    </div>
     <div class="widgets">
-      <button class="widget" id="transfer_section">Transfer Section</button>
-      <button class="widget" id="bill_payment">Bill Payment</button>
-      <button class="widget" id="deposit_withdraw">Deposit/Withdraw</button>
+      <button class="card" id="transfer_section">Transfer Section</button>
+      <button class="card" id="bill_payment">Bill Payment</button>
+      <button class="card" id="deposit_withdraw">Deposit/Withdraw</button>
     </div>
   </div>
   <script src="main.js" ></script>
