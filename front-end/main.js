@@ -1,6 +1,7 @@
 const logout_btn = document.getElementById("logout-btn");
 const email = localStorage.getItem("email");
 
+
 class ShowingInfo {
 	constructor(email) {
 		this.email = email;
@@ -76,6 +77,77 @@ class ShowingInfo {
 		console.warn("upcomingBills skipped: backend route missing.");
 	}
 }
+
+class twoEmail {
+	constructor(from_email, to_email, amount){
+		this.from_email = from_email,
+		this.to_email = to_email,
+		this.amount = amount
+	}
+
+
+	async transfer_money_method(){
+	    const request = await fetch("http://localhost:3000/main", {
+	        method: "POST",
+	        headers: {"Content-Type": "application/json"},
+	        body: JSON.stringify({
+	            to_email: this.to_email,
+	            amount: this.amount
+	        })
+	    });
+
+	    if (!request.ok){
+	        throw new Error("Something went wrong please try again.");
+	    }
+
+	    const data = await request.json();
+
+	    if (data.result.includes("success")) {
+	        alert("success");
+	    } else {
+	        alert("fail");
+	    }
+	}
+}
+
+
+
+const trans_sec_div = document.getElementById("transfer_section_div");
+const res_pls = document.getElementById("response_place");
+
+document.getElementById("transfer_money").addEventListener("click", () => {
+	trans_sec_div.style.display = "flex";
+	trans_sec_div.style.visibility  =  "visible";
+
+
+})
+document.getElementById("back_button").addEventListener("click", () => {
+	trans_sec_div.style.display = "none";
+	trans_sec_div.style.visibility = "hidden";
+	res_pls.textContent = "";
+
+})
+document.getElementById("send_button").addEventListener("click", () => {
+	const to_email_user = document.getElementById("to_email").value.trim();
+	const amountStr = document.getElementById("transfer_amount").value.trim();
+	const amount = parseFloat(amountStr);
+
+	if (!to_email_user || !amountStr || isNaN(amount) || amount <= 0) {
+		
+		res_pls.style.display = "block";
+		res_pls.style.visibility = "visible";
+		res_pls.textContent = "Please enter a valid recipient email and amount."
+		return;
+	return;
+	}
+
+	const email_of_user = localStorage.getItem("email");
+	const makingReq = new twoEmail(email_of_user, to_email_user, amount);
+	makingReq.transfer_money_method();
+
+})
+
+
 
 const userInfo = new ShowingInfo(email);
 userInfo.nameRequest();
