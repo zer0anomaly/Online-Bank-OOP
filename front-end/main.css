@@ -87,3 +87,53 @@ body.dashboard-page {
 .transaction-item:hover {
   background: #eef;
 }
+.transfer_section_div {
+  height: 250px;
+  width: 450px;
+  visibility: hidden;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  gap: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #323741;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 20px;
+  flex-direction: column;
+}
+.recipents_email {
+  position: relative;
+  top: -20px;
+}
+.to_email {
+  position: relative;
+  top: -20px;
+}
+.transfer_amount {
+  position: relative;
+  top: -20px;
+}
+.back_button {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  left: 150px;
+  top: -12px;
+}
+.send_button {
+  position: relative;
+  top: -20px;
+  width: 90px;
+}
+.response_place {
+  visibility: hidden;
+  display: none;
+  font-size: 15px;
+  position: relative;
+  top: -20px;
+}
