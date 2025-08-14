@@ -87,10 +87,11 @@ class twoEmail {
 
 
 	async transfer_money_method(){
-	    const request = await fetch("http://localhost:3000/main", {
+	    const request = await fetch("http://localhost:3000/main/transfer", {
 	        method: "POST",
 	        headers: {"Content-Type": "application/json"},
 	        body: JSON.stringify({
+	        	from_email: this.from_email,
 	            to_email: this.to_email,
 	            amount: this.amount
 	        })
@@ -104,8 +105,11 @@ class twoEmail {
 
 	    if (data.result.includes("success")) {
 	        alert("success");
+	        location.reload();
 	    } else {
 	        alert("fail");
+	        location.reload();
+	        
 	    }
 	}
 }
@@ -138,7 +142,6 @@ document.getElementById("send_button").addEventListener("click", () => {
 		res_pls.style.visibility = "visible";
 		res_pls.textContent = "Please enter a valid recipient email and amount."
 		return;
-	return;
 	}
 
 	const email_of_user = localStorage.getItem("email");
