@@ -38,5 +38,11 @@
     "user_name": "blat1",
     "email": "blat@gmail.com",
     "password": "$2b$10$7x1W5A9EHZE2aQdGWgxqWOG.hiBvA01DQE15AuV4x4IhIIhpOv8Lm"
+  },
+  {
+    "full_name": "new account",
+    "user_name": "account",
+    "email": "account@gmail.com",
+    "password": "$2b$10$CmaK6qDQtDiGWqCse5fhzOl8soQ7i0dpbXZIlParE5wHcQzrWQ0qK"
   }
 ]
