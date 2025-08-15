@@ -35,8 +35,8 @@ class RegisterService {
 	        const initialData = [{
 	            date: new Date().toISOString(), 
 	            email: this.email,
-	            recent_transaction: null,
-	            type: null 
+	            recent_transaction: 0,
+	            type: "None"
 	        }];
 
 	        await fs.writeFile(userFilePath, JSON.stringify(initialData, null, 2));
