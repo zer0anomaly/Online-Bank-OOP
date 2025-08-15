@@ -1,4 +1,5 @@
 const fs = require("fs");
+const fsP = require("fs/promises");
 const path = require("path");
 
 class TransferService {
@@ -20,6 +21,7 @@ class TransferService {
                 data.balance = 0;
             }
             return { data, filePath };
+
         } catch {
             return null;
         }
@@ -28,7 +30,9 @@ class TransferService {
     static saveUserData(filePath, data) {
         try {
             fs.writeFileSync(filePath, JSON.stringify([data], null, 2), "utf8");
-        } catch {}
+        } catch (err) {
+            console.error("Error saving user data:", err);
+        }
     }
 
     static async transfer(from_email, to_email, amount) {
@@ -47,13 +51,42 @@ class TransferService {
             return { success: false, message: "Insufficient funds" };
         }
 
+        // Update balances
         sender.data.balance -= amount;
         receiver.data.balance += amount;
 
         this.saveUserData(sender.filePath, sender.data);
         this.saveUserData(receiver.filePath, receiver.data);
 
+        // Add transactions for both
+        await this.addTransaction(from_email, -amount, `Transfer to ${to_email}`);
+        await this.addTransaction(to_email, amount, `Transfer from ${from_email}`);
+
         return { success: true, message: "Transfer complete" };
+    }
+
+    static async addTransaction(email, amount, type) {
+        const safeEmail = email.replace(/[@.]/g, "_");
+        const transactionPath = path.join(__dirname, `../data/userinfo/transactions/${safeEmail}.json`);
+
+        try {
+            let data = [];
+            if (fs.existsSync(transactionPath)) {
+                const fileContent = await fsP.readFile(transactionPath, "utf8");
+                data = JSON.parse(fileContent);
+            }
+
+            data.unshift({
+                date: new Date().toISOString(),
+                email,
+                recent_transaction: amount,
+                type
+            });
+
+            await fsP.writeFile(transactionPath, JSON.stringify(data, null, 2));
+        } catch (err) {
+            console.error("Error adding transaction:", err);
+        }
     }
 }
 
